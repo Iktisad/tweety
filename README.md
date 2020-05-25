@@ -26,7 +26,10 @@ after installation check terminal to see if composer works
 
 ### 2nd step
 clone project
+
 > git clone https://github.com/Iktisad/tweety.git
+
+
 or simply clone it using github gui option.
 cloned project must be kept in htdocs folder of XAMPP OR WAMPP server
 
