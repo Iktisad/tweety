@@ -8,15 +8,21 @@
 </p>
 
 ## INSTRUCTIONS TO GET STARTED
-
+### 1st step
 install composer first or if you have composer skip to the next step
 
 for windows
-> <a href="https://getcomposer.org/Composer-Setup.exe"> composer install </a>
+> <a href="https://getcomposer.org/Composer-Setup.exe"> composer install.</a>
 
 During the set up choose the following directory if u have an existing xampp server
-> \xampp\php\php.exe
-after installation check terminal to see if composer works
-> $: composer // bash terminal
-> >composer // windows cmd or powershell
 
+> \xampp\php\php.exe 
+
+after installation check terminal to see if composer works
+
+#### $: composer // bash terminal 
+
+#### composer // windows cmd or powershell
+
+### 2nd step
+clone project
