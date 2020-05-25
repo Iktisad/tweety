@@ -33,6 +33,8 @@ clone project
 or simply clone it using github gui option.
 cloned project must be kept in htdocs folder of XAMPP OR WAMPP server
 
+change the name of the zip file or the clone to ***tweety***
+
 ### 3rd step 
 Setting up the dependencies
 move into the application folder from cmd , powershell or terminal
