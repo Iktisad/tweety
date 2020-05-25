@@ -27,7 +27,7 @@ after installation check terminal to see if composer works
 ### 2nd step
 clone project
 
-> git clone https://github.com/Iktisad/tweety.git
+> git clone https://github.com/Iktisad/tweety.git tweety
 
 
 or simply clone it using github gui option.
@@ -65,9 +65,9 @@ change
 >DB_PASSWORD = homestead to DB_PASSWORD = ''
 
 
-### 4th 
+### 4th step
 
-####step run all the commands below
+#### Now run all the commands below
 
 ***Note all these commands mus be run in /xampp/htdocs/tweety directory***
 
