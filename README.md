@@ -14,7 +14,7 @@ install composer first or if you have composer skip to the next step
 for windows
 > <a href="https://getcomposer.org/Composer-Setup.exe"> composer install.</a>
 
-During the set up choose the following directory if u have an existing xampp server
+During the set up choose the following directory if u have an existing XAMPP OR WAMP server
 
 > \xampp\php\php.exe 
 
@@ -32,6 +32,8 @@ clone project
 
 or simply clone it using github gui option.
 cloned project must be kept in htdocs folder of XAMPP OR WAMPP server
+
+> \xampp\htdocs\\{git-clone}
 
 change the name of the zip file or the clone to ***tweety***
 
@@ -58,6 +60,8 @@ run the command in terminal, cmd or powershell
 open .env file
 change
 
+>APP_NAME = Laravel to APP_NAME = tweety
+
 >DB_DATABASE = homestead to DB_DATABASE = tweety
 
 >DB_USERNAME = homestead to DB_USERNAME = root
@@ -69,7 +73,7 @@ change
 
 #### Now run all the commands below
 
-***Note all these commands mus be run in /xampp/htdocs/tweety directory***
+***Note all these commands must be run in \xampp\htdocs\tweety directory***
 
 > php artisan key:generate
 
@@ -78,7 +82,7 @@ change
 > php artisan serve // this will generate localhost session http//: 127.0.0.1:800 copy paste in your browser to gain access
 
 
-***Finally if you face any errors during running the project***
+***Finally if you face any errors during running the project*** ,
 run the command inside /xampp/htdocs/tweety
 
 > npm install && run dev 
