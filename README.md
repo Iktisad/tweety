@@ -7,8 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-##INSTRUCTIONS TO GET STARTED
+## INSTRUCTIONS TO GET STARTED
 
---install composer first or if you have composer skip to the next step
+install composer first or if you have composer skip to the next step
 
-> composer install
+for windows
+> <a href="https://getcomposer.org/Composer-Setup.exe"> composer install </a>
