@@ -60,7 +60,10 @@ change
 >DB_PASSWORD = homestead to DB_PASSWORD = ''
 
 
-### 4th step run all the commands below
+### 4th 
+
+####step run all the commands below
+
 ***Note all these commands mus be run in /xampp/htdocs/tweety directory***
 
 > php artisan key:generate
