@@ -55,8 +55,11 @@ run the command in terminal, cmd or powershell
 ***Set Up The Database in .env file***
 open .env file
 change
+
 >DB_DATABASE = homestead to DB_DATABASE = tweety
+
 >DB_USERNAME = homestead to DB_USERNAME = root
+
 >DB_PASSWORD = homestead to DB_PASSWORD = ''
 
 
