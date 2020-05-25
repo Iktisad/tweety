@@ -26,3 +26,51 @@ after installation check terminal to see if composer works
 
 ### 2nd step
 clone project
+> git clone https://github.com/Iktisad/tweety.git
+or simply clone it using github gui option.
+cloned project must be kept in htdocs folder of XAMPP OR WAMPP server
+
+### 3rd step 
+Setting up the dependencies
+move into the application folder from cmd , powershell or terminal
+
+> cd xampp/htdocs/tweety
+
+then run 
+
+> composer install 
+
+This will bring in all the dependencies needed
+
+***NEXT***
+
+copy .env.example file to .env
+run the command in terminal, cmd or powershell
+
+> copy .env.example .env
+
+***Set Up The Database in .env file***
+open .env file
+change
+>DB_DATABASE = homestead to DB_DATABASE = tweety
+>DB_USERNAME = homestead to DB_USERNAME = root
+>DB_PASSWORD = homestead to DB_PASSWORD = ''
+
+
+### 4th step run all the commands below
+***Note all these commands mus be run in /xampp/htdocs/tweety directory***
+
+> php artisan key:generate
+
+> php artisan migrate // this will create all the tables in the database
+
+> php artisan serve // this will generate localhost session http//: 127.0.0.1:800 copy paste in your browser to gain access
+
+
+***Finally if you face any errors during running the project***
+run the command inside /xampp/htdocs/tweety
+
+> npm install && run dev 
+
+
+
