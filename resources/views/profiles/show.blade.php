@@ -42,16 +42,16 @@
 
             </div>
         </div>
-        <p class="text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero pariatur voluptas aspernatur totam veritatis
-            nostrum. Autem dolorum repudiandae distinctio, tenetur necessitatibus est dignissimos ullam, animi non
-            tempore
-            eveniet nostrum exercitationem.Molestias officia doloribus quia aut maxime, quis odit animi ad
-            necessitatibus?
-            At, rerum necessitatibus. Nemo, praesentium placeat dolore aspernatur labore, a inventore nam corrupti
-            facilis
-            quasi aliquid numquam saepe aperiam.
-        </p>
+
+        <div class="bg-teal-100 border-l-4 border-teal-500 text-gray-700 p-4">
+
+            <p class="font-bold">Bio</p>
+
+            <p class="text-sm">
+                {{ $user->getBio() ?? 'No Bio Set Yet' }}
+            </p>
+        </div>
+
 
 
     </header>

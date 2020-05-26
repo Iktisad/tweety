@@ -21,10 +21,10 @@ class TweetsController extends Controller
     {
         $attributes = $request->validate([
             
-            'body'=>['required','max:191']
+            'body'=>['required','max:16000']
             
         ],[
-            'body.required' => 'You forgot to write the tweet!!' 
+            'body.required' => 'You forgot to write your thoughts!!' 
         ]);
         Tweet::create([
             'user_id' => auth()->user()->id,

@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username','name', 'avatar','cover','email', 'password',
+        'username','name', 'avatar','cover','email','bio', 'password',
     ];
 
     /**
@@ -37,7 +37,13 @@ class User extends Authenticatable
      * @var array
      */
 
-     public function getAvatar()
+ 
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+
+    public function getAvatar()
     {
         if($this->avatar){
             return asset('storage/'.$this->avatar);
@@ -53,9 +59,12 @@ class User extends Authenticatable
         return asset('https://placeimg.com/720/240/nature');
     }
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function getBio()
+    {
+        // return $this->bio;
+        return $this->bio;
+    }
+    
 
     public function tweets()
     {
