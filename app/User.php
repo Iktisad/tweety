@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username','name', 'avatar','email', 'password',
+        'username','name', 'avatar','cover','email', 'password',
     ];
 
     /**
@@ -44,6 +44,15 @@ class User extends Authenticatable
         }
         return asset('https://api.adorable.io/avatars/285/@adorable'.$this->username.'png');
     }
+
+    public function getCoverPhoto()
+    {
+        if($this->cover){
+            return asset('storage/' . $this->cover);
+        }
+        return asset('https://placeimg.com/720/240/nature');
+    }
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

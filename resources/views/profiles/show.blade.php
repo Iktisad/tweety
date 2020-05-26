@@ -3,11 +3,13 @@
     <header class="mb-6 relative">
         <div class="relative mb-4">
             {{-- object-cover h-48 w-full border border-l-8 border-gray-400 rounded-lg --}}
-            <img class="mb-2 h-48 w-full rounded-lg"
-                src="https://i.pinimg.com/originals/3b/d2/1d/3bd21d6ba5ec2cb0a9f12a928b6bee4e.jpg" alt="">
 
 
-            <img src="{{$user->getAvatar()}}" alt=""
+            <img class=" mb-2 object-cover h-48 w-full rounded-lg" src="{{ $user->getCoverPhoto() }}"
+                alt="{{$user->username.'s cover photo'}}">
+
+
+            <img src="{{$user->getAvatar()}}" alt="{{ $user->username.'s photo' }}"
                 class="rounded-full shadow-xl absolute  bottom-0 transform -translate-x-1/2 translate-y-1/2" width="150"
                 style="left:50%">
 
