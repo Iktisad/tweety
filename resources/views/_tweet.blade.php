@@ -29,14 +29,14 @@
         </small>
 
         <div class="flex mt-2">
-            <form action="{{ route('like', $tweet->user) }}" method="POST" class="mr-2">
+            <form action="{{ route('like', $tweet) }}" method="POST" class="mr-2">
                 @csrf
                 <button name="like" type="submit">
                     <i class="far fa-thumbs-up"></i>
                     {{$tweet->likes}}
                 </button>
             </form>
-            <form action="{{ route('dislike', $tweet->user) }}" method="POST">
+            <form action="{{ route('dislike', $tweet) }}" method="POST">
                 @csrf
                 @method('PATCH')
                 <button name="dislike" type="submit">
