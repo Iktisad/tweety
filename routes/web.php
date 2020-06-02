@@ -29,6 +29,12 @@ Route::get('/explore','ExploreController@index')->name('explore');
 Route::post('/likes/{tweet}/like','LikesController@store')->name('like');
 Route::patch('/likes/{tweet}/dislike','LikesController@update')->name('dislike');
 
+Route::post('/comments/{comment}/comment', 'CommentsController@store')->name('comment');
+Route::patch('/comment/{comment}/update', 'CommentsController@update')->name('comment.update');
+
+Route::post('/comments/{comment}/reply', 'CommentsController@storeReply')->name('comment-reply');
+Route::patch('/comments/{comment}/updateReply', 'CommentsController@updateReply')->name('comment-reply.update');
+
 });
 
 Route::get('/profiles/{user:username}','ProfilesController@show')->name('profile');

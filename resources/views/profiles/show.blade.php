@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="bg-teal-100 border-l-4 border-teal-500 text-gray-700 p-4">
+        <div class="bg-purple-100 border-l-4 border-purple-500 text-gray-700 p-4">
 
             <p class="font-bold">Bio</p>
 

@@ -3,7 +3,7 @@
 namespace App;
 
 
-use App\Traits\Likeable;
+
 use App\Traits\Followable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable , Followable , Likeable;
+    use Notifiable , Followable;
 
     /**
      * The attributes that are mass assignable.
@@ -86,7 +86,7 @@ class User extends Authenticatable
         return Tweet::whereIn('user_id',$friends)
         ->orWhere('user_id',$this->id)
         ->latest()
-        ->withLikes()
+        ->withLikes() // this method is in likable
         ->paginate(20);
     }
 

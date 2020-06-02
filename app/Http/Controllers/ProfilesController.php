@@ -40,10 +40,15 @@ class ProfilesController extends Controller
             'avatar'=>['sometimes','file','image','max:5000'],
             'cover'=>['sometimes','file','image','max:5000'],
             'email'=>['string','required','email','max:255',Rule::unique('users')->ignore($user)],
-            'password'=>['string','required','min:8','max:255','confirmed'],
+            'password'=>['nullable','string','min:8','max:255','confirmed'],
         ]);
 
-        $attributes['password'] = bcrypt($attributes['password']);
+        if(request('password')){
+            $attributes['password'] = bcrypt($attributes['password']);
+        }else{
+            $attributes['password'] = $user->password;
+        }
+        
         
         if(request('avatar')){
             if(File:: exists('storage/' . $user->avatar)){

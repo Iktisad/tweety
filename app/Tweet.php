@@ -28,7 +28,14 @@ class Tweet extends Model
 
     public function likes() // This Like is a polymorphic relationship with tweets and likes it is related to 
     {
-        return $this->morphMany('App\Like', 'likeable');
+        return $this->morphMany(Like::class, 'likeable');
     }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class , 'commentable')->whereNull('parent_id');
+    }
+
+    
 
 }
