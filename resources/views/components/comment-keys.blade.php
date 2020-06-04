@@ -1,16 +1,17 @@
 <div class="w-12  h-12 flex justify-between items-center p-2">
-    <form action=" {{ route('like', $tweet) }}" method="POST">
+    <form action=" #{{-- route('like', $tweet) --}}" method="POST">
         @csrf
         <button name="like" type="submit">
 
             <i class="far fa-thumbs-up"></i>
         </button>
     </form>
-    <span class="text-gray-700">{{$tweet->likes}}</span>
+    {{-- comment likes --}}
+    <span class="text-gray-700">{{'2'}}</span>
 
 </div>
 <div class="w-12  h-12 flex justify-between items-center p-2">
-    <form action="{{ route('dislike', $tweet) }}" method="POST">
+    <form action="#{{-- route('dislike', $tweet) --}}" method="POST">
         @csrf
         @method('PATCH')
         <button name="dislike" type="submit">
@@ -18,19 +19,11 @@
         </button>
 
     </form>
-    <span class="text-gray-700">{{$tweet->dislikes}}</span>
+    {{-- comment dislikes --}}
+    <span class="text-gray-700">{{'0'}}</span>
 </div>
 <div class="w-12  h-12 flex justify-between items-center p-2">
     <button>
-        <i class="far fa-comment"></i>
-    </button>
-
-    <span class="ml-2 text-xs">2k</span>
-</div>
-
-<div class="w-12 h-12 flex items-center p-2">
-    <button class="ml-2">
-        <i class="fas fa-retweet"></i>
-        {{-- <i class="far fa-share-square"></i> --}}
+        <i class="fas fa-reply"></i>
     </button>
 </div>

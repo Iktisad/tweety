@@ -35,9 +35,12 @@
                 </header>
             </section>
             {{$slot}}
-
-
         </div>
+
+
+        <script src="{{asset('https://unpkg.com/turbolinks')}}">
+
+        </script>
     </body>
 
 </html>
