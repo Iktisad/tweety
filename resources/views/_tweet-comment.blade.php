@@ -5,7 +5,7 @@
     <div class="mr-4 flex-shrink-0">
 
         <a href="#">
-            <img src="{{ $comments->user->getAvatar()}}" alt="" class="rounded-full h-10">
+            <img src="{{ $comment->user->getAvatar()}}" alt="" class="rounded-full h-10">
         </a>
 
     </div>
@@ -15,28 +15,28 @@
 
             {{-- user name --}}
             <h6 class="font-bold text-base">
-                {{ $comments->user->name }}
+                {{ $comment->user->name }}
             </h6>
 
             {{-- user username --}}
-            <a class="hover:underline" href="{{ route('profile', $comments->user)}}">
+            <a class="hover:underline" href="{{ route('profile', $comment->user)}}">
                 <span class="ml-1 text-sm text-gray-800">
-                    {{ '@'. $comments->user->username ?? 'nothing yet' }}
+                    {{ '@'. $comment->user->username ?? 'nothing yet' }}
                 </span>
             </a>
         </div>
 
         <div class="w-full">
-            <p class="text-sm mb-2"> {{$comments->body}} </p>
+            <p class="text-sm mb-2"> {{$comment->body}} </p>
 
             <small class="text-xs text-gray-600">
-                {{ $comments->created_at->diffForHumans() }}
+                {{ $comment->created_at->diffForHumans() }}
             </small>
         </div>
 
 
         <div class="w-full flex">
-            <x-comment-keys :comments='$comments'>
+            <x-comment-keys :comment='$comment'>
                 </x->
         </div>
     </div>

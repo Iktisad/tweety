@@ -47,9 +47,9 @@
                 </x->
         </div>
 
-        @foreach ($tweet->comments as $comments)
+        @foreach ($tweet->comments as $comment)
         {{-- include comments  --}}
-        @include('_tweet-comments')
+        @include('_tweet-comment')
 
 
         @endforeach

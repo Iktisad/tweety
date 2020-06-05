@@ -1,5 +1,5 @@
 <div class="w-12  h-12 flex justify-between items-center p-2">
-    <form action=" {{ route('like', $tweet) }}" method="POST">
+    <form action=" {{ route('tweet.like', $tweet) }}" method="POST">
         @csrf
         <button name="like" type="submit">
 
@@ -10,7 +10,7 @@
 
 </div>
 <div class="w-12  h-12 flex justify-between items-center p-2">
-    <form action="{{ route('dislike', $tweet) }}" method="POST">
+    <form action="{{ route('tweet.dislike', $tweet) }}" method="POST">
         @csrf
         @method('PATCH')
         <button name="dislike" type="submit">

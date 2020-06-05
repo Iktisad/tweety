@@ -26,8 +26,12 @@ Route::get('/profiles/{user:username}/edit','ProfilesController@edit')->name('pr
 Route::patch('/profiles/{user:username}/update','ProfilesController@update')->name('profile.update')->middleware('can:edit,user');
 Route::get('/explore','ExploreController@index')->name('explore');
 
-Route::post('/likes/{tweet}/like','LikesController@store')->name('like');
-Route::patch('/likes/{tweet}/dislike','LikesController@update')->name('dislike');
+Route::post('/likes/{tweet}/tweet-like','LikesController@store')->name('tweet.like');
+Route::patch('/likes/{tweet}/tweet-dislike','LikesController@update')->name('tweet.dislike');
+
+Route::post('/likes/{comment}/comment-like','LikesController@commentStore')->name('comment.like');
+Route::patch('/likes/{comment}/comment-dislike','LikesController@commentUpdate')->name('comment.dislike');
+
 
 Route::post('/comments/{comment}/comment', 'CommentsController@store')->name('comment');
 Route::patch('/comment/{comment}/update', 'CommentsController@update')->name('comment.update');
