@@ -25,4 +25,5 @@
             </div>
         </main>
     </section>
+
 </x-master>

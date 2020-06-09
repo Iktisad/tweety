@@ -2,9 +2,14 @@
     <form method="POST" action="/tweets">
 
         @csrf
+
+
         <textarea name="body" id="body" required
-            class="w-full p-2 mb-2 @error('body')shadow appearance-none border border-red-500 rounded  text-gray-700 leading-tight focus:outline-none focus:shadow-outline @enderror"
+            class="w-full p-2 mb-2 resize-none overflow-hidden 
+            @error('body')shadow appearance-none border border-red-500 rounded  text-gray-700 leading-tight focus:outline-none focus:shadow-outline @enderror"
             placeholder="Share a story!"></textarea>
+
+
         @error('body')
 
         <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">

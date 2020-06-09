@@ -25,7 +25,7 @@
                 </span>
             </a>
         </div>
-
+        {{-- user comment --}}
         <div class="w-full">
             <p class="text-sm mb-2"> {{$comment->body}} </p>
 
@@ -33,6 +33,7 @@
                 {{ $comment->created_at->diffForHumans() }}
             </small>
         </div>
+
 
 
         <div class="w-full flex">

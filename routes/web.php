@@ -33,7 +33,7 @@ Route::post('/likes/{comment}/comment-like','LikesController@commentStore')->nam
 Route::patch('/likes/{comment}/comment-dislike','LikesController@commentUpdate')->name('comment.dislike');
 
 
-Route::post('/comments/{comment}/comment', 'CommentsController@store')->name('comment');
+Route::post('/comments/{tweet}/comment', 'CommentsController@store')->name('comment');
 Route::patch('/comment/{comment}/update', 'CommentsController@update')->name('comment.update');
 
 Route::post('/comments/{comment}/reply', 'CommentsController@storeReply')->name('comment-reply');

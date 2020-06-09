@@ -47,49 +47,16 @@
                 </x->
         </div>
 
+        <div class="p-2 w-full h-auto">
+            @include('_publish-comment-panel')
+        </div>
+
+
         @foreach ($tweet->comments as $comment)
         {{-- include comments  --}}
         @include('_tweet-comment')
 
-
         @endforeach
 
     </div>
-
-
-
-
 </div>
-
-{{-- <div class="flex p-4 {{$loop->last ? '' : 'border-b border-b-gray-400'}}">
-
-<div class="pl-16 w-full flex">
-    <div class="mr-4 flex-shrink-0">
-        <a href="{{ route('profile', $tweet->user) }}">
-            <img src="https://api.adorable.io/avatars/285/abott@adorable.png" alt="" class="rounded-full h-10">
-        </a>
-    </div> --}}
-    {{-- users --}}
-    {{-- <div class="w-full">
-
-            <h5 class="font-bold mb-4">
-                {{ 'Shala Uddin'}}
-
-    <a class="hover:underline" href="{{ route('profile', $tweet->user) }}">
-
-        <span class="ml-1 text-xs text-gray-800">
-
-            {{ '@'. 'someCoolDude' }}
-
-        </span>
-    </a>
-    </h5>
-
-</div>
-
-</div>
-</div> --}}
-
-{{-- <p> comments are here and unstyled</p> --}}
-{{-- ?? simply means if it doesnt exist then print nothing --}}
-{{-- {{ $tweet->comments  ?? ''}} --}}

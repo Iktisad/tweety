@@ -21,7 +21,8 @@
     <span class="text-gray-700">{{$tweet->dislikes}}</span>
 </div>
 <div class="w-12  h-12 flex justify-between items-center p-2">
-    <button>
+
+    <button onclick="focusOn({{ $tweet->id }})">
         <i class="far fa-comment"></i>
     </button>
 
