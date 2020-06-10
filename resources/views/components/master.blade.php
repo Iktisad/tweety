@@ -41,9 +41,10 @@
         </div>
 
 
-        {{-- <script src="{{asset('https://unpkg.com/turbolinks')}}"></script> --}}
-        <script src="js/textareaAutoResize.js"></script>
-        <script src="js/focusElements.js"></script>
+        <script src="{{asset('https://unpkg.com/turbolinks')}}"></script>
+        <script src="{{asset('js/textareaAutoResize.js')}}"></script>
+        <script src="{{asset('js/focusElements.js')}}"></script>
+        <script src="{{asset('js/likeDislikeRequest.js')}}"></script>
     </body>
 
 </html>

@@ -11,9 +11,10 @@ class LikesController extends Controller
     //
 
     public function store(Tweet $tweet)
-    {
+    {   
         $tweet->like();
         return back();
+        // return response();
     }
 
     public function update(Tweet $tweet)
