@@ -4,9 +4,9 @@
         @csrf
 
 
-        <textarea name="body" id="body" required
-            class="w-full p-2 mb-2 resize-none overflow-hidden 
-            @error('body')shadow appearance-none border border-red-500 rounded  text-gray-700 leading-tight focus:outline-none focus:shadow-outline @enderror"
+        <textarea name="body" id="tweet" required
+            class="w-full p-2 mb-2 resize-none overflow-hidden text-gray-800 h-20
+            @error('body')shadow appearance-none border border-red-500 rounded leading-tight focus:outline-none focus:shadow-outline @enderror"
             placeholder="Share a story!"></textarea>
 
 
