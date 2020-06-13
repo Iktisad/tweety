@@ -1,32 +1,45 @@
+{{-- like dislike helper --}}
+<input type="hidden" id="likeDislikeHelper-{{$tweet->id}}"
+    data-like="{{ $tweet->isAlreadyLiked(auth()->user()->id,true)== true ? 'true':'false' }}"
+    data-dislike="{{ $tweet->isAlreadyDisliked(auth()->user()->id,false)== true ? 'true':'false' }}">
+
 {{-- Like --}}
 <div class="w-12  h-12 flex justify-between items-center p-2">
-    <form action=" {{ route('tweet.like', $tweet) }}" method="POST">
+
+    <form id="like-{{ $tweet->id }}" onsubmit="event.preventDefault(); likeComment({{ $tweet->id }});"
+        action=" {{ route('tweet.like', $tweet) }}" method="POST">
         @csrf
-        {{-- ajax request helper --}}
-        <input type="hidden" id="like" url="{{ route('tweet.like', $tweet) }}">
 
         <button name="like" type="submit">
 
-            <i class="far fa-thumbs-up"></i>
+            <i class="{{ $tweet->isAlreadyLiked(auth()->user()->id,true) ? 'fas fa-thumbs-up':'far fa-thumbs-up'}}"></i>
+
         </button>
+
     </form>
-    <span class="text-gray-700">{{$tweet->likes}}</span>
+
+    <span id="count-like-{{$tweet->id}}" class="text-gray-700">{{$tweet->likes}}</span>
 
 </div>
 
 {{-- dislike --}}
 <div class="w-12  h-12 flex justify-between items-center p-2">
-    <form action="{{ route('tweet.dislike', $tweet) }}" method="POST">
+    <form id="dislike-{{ $tweet->id }}" onsubmit="event.preventDefault(); disLikeComment({{ $tweet->id }});"
+        action="{{ route('tweet.dislike', $tweet) }}" method="POST">
         @csrf
-        {{-- ajax request helper --}}
-        <input type="hidden" id="dislike" url="{{ route('tweet.dislike', $tweet) }}">
+
         @method('PATCH')
+
         <button name="dislike" type="submit">
-            <i class="far fa-thumbs-down"></i>
+            <i
+                class="{{$tweet->isAlreadyDisliked(auth()->user()->id,false)? 'fas fa-thumbs-down' : 'far fa-thumbs-down'}}"></i>
         </button>
 
+
     </form>
-    <span class="text-gray-700">{{$tweet->dislikes}}</span>
+
+    <span id="count-dislike-{{ $tweet->id}}" class="text-gray-700">{{$tweet->dislikes}}</span>
+
 </div>
 
 {{-- comment focus --}}
