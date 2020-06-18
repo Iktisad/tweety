@@ -12,12 +12,25 @@ class ProfilesController extends Controller
     //
     public function show(User $user)
     {
+        // $user->tweets()->withLikes()->get();
+        $userRetweets = $user->retweet()->with('retweetable','retweetable.user:id,username,name,avatar')->withLikes()->take(5)->get();
+        
+        foreach ($userRetweets as $retweet) {
+            $retweet->isRetweet = true;
+        }
+        
+        // echo $userRetweets;
+        $tweets = $user->tweets()->withLikes()->get();
+
+
+        $tweets = $tweets->push($userRetweets)->flatten();
+        
         return view('profiles.show',[
             'user' => $user,
-            'tweets'=>$user->tweets()->withLikes()->paginate('4'),
+            'tweets'=>$tweets,
         ]);
 
-        echo $user->tweets()->withLikes()->get();
+        // echo $user->tweets()->withLikes()->get();
     }
 
     public function edit(User $user)

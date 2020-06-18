@@ -3,11 +3,12 @@
 namespace App;
 
 use App\Traits\Likeable;
+use App\Traits\Retweetable;
 use Illuminate\Database\Eloquent\Model;
 
 class Tweet extends Model
 {
-    use Likeable;
+    use Likeable , Retweetable;
 
     
     protected $dates = [
@@ -36,6 +37,9 @@ class Tweet extends Model
         return $this->morphMany(Comment::class , 'commentable')->whereNull('parent_id')->withLikes();
     }
 
-    
+    public function retweets()
+    {
+        return $this->morphMany(Retweet::class , 'retweetable');
+    }
 
 }

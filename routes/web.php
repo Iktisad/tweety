@@ -39,6 +39,12 @@ Route::patch('/comment/{comment}/update', 'CommentsController@update')->name('co
 Route::post('/comments/{comment}/reply', 'CommentsController@storeReply')->name('comment-reply');
 Route::patch('/comments/{comment}/updateReply', 'CommentsController@updateReply')->name('comment-reply.update');
 
+Route::post('/likes/{retweet}/retweet-like','LikesController@retweetStore')->name('retweet.like');
+Route::patch('/likes/{retweet}/retweet-dislike','LikesController@retweetUpdate')->name('retweet.dislike');
+
+Route::post('/retweets/{retweet}/store','RetweetsController@store')->name('retweet');
+Route::post('/retweets/{retweet}/retweet-store','RetweetsController@retweetStore')->name('retweet.store');
+
 });
 
 Route::get('/profiles/{user:username}','ProfilesController@show')->name('profile');

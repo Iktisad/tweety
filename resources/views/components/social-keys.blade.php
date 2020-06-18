@@ -1,13 +1,10 @@
-{{-- like dislike helper --}}
-<input type="hidden" id="likeDislikeHelper-{{$tweet->id}}"
-    data-like="{{ $tweet->isAlreadyLiked(auth()->user()->id,true)== true ? 'true':'false' }}"
-    data-dislike="{{ $tweet->isAlreadyDisliked(auth()->user()->id,false)== true ? 'true':'false' }}">
-
 {{-- Like --}}
 <div class="w-12  h-12 flex justify-between items-center p-2">
 
-    <form id="like-{{ $tweet->id }}" onsubmit="event.preventDefault(); likeComment({{ $tweet->id }});"
-        action=" {{ route('tweet.like', $tweet) }}" method="POST">
+    <form id="like-{{ $tweet->id}}-{{$tweet->isRetweet ? 'retweet': 'tweet'}}"
+        onsubmit="event.preventDefault(); likeComment(this);"
+        action=" {{ $tweet->isRetweet ? route('retweet.like', $tweet) : route('tweet.like', $tweet) }}" method="POST">
+
         @csrf
 
         <button name="like" type="submit">
@@ -18,14 +15,22 @@
 
     </form>
 
-    <span id="count-like-{{$tweet->id}}" class="text-gray-700">{{$tweet->likes}}</span>
+    <span id="count-like-{{$tweet->id}}-{{$tweet->isRetweet ? 'retweet':'tweet'}}"
+        class="text-gray-700">{{$tweet->likes}}</span>
 
 </div>
 
+
+
 {{-- dislike --}}
 <div class="w-12  h-12 flex justify-between items-center p-2">
-    <form id="dislike-{{ $tweet->id }}" onsubmit="event.preventDefault(); disLikeComment({{ $tweet->id }});"
-        action="{{ route('tweet.dislike', $tweet) }}" method="POST">
+
+
+    <form id="dislike-{{ $tweet->id }}-{{$tweet->isRetweet ? 'retweet':'tweet'}}"
+        onsubmit="event.preventDefault(); disLikeComment(this);"
+        action="{{ $tweet->isRetweet ? route('retweet.dislike', $tweet) : route('tweet.dislike', $tweet) }}"
+        method="POST">
+
         @csrf
 
         @method('PATCH')
@@ -38,27 +43,41 @@
 
     </form>
 
-    <span id="count-dislike-{{ $tweet->id}}" class="text-gray-700">{{$tweet->dislikes}}</span>
+    <span id="count-dislike-{{ $tweet->id}}-{{$tweet->isRetweet ? 'retweet':'tweet'}}"
+        class="text-gray-700">{{$tweet->dislikes}}</span>
 
 </div>
 
 {{-- comment focus --}}
 <div class="w-12  h-12 flex justify-between items-center p-2">
 
-    <button onclick="focusOn({{ $tweet->id }})">
+
+    <button
+        onclick={{ $tweet->isRetweet ? 'focusOnRetweetComment('.auth()->user()->id.','.$tweet->id.')' :'focusOn('.$tweet->id.')'}}>
         <i class="far fa-comment"></i>
     </button>
 
+
     <span class="ml-2 text-xs">2k</span>
+
+
 </div>
 
 {{-- retweet --}}
+@if (!$tweet->isRetweet)
+
 <div class="w-12 h-12 flex items-center p-2">
 
-    {{-- ajax request helper --}}
-    <input type="hidden" id="">
-    <button class="ml-2">
-        <i class="fas fa-retweet"></i>
-        {{-- <i class="far fa-share-square"></i> --}}
-    </button>
+    <form id="{{ $tweet->id}}-tweet" action="{{ route('retweet', $tweet) }}" method="post"
+        onsubmit="event.preventDefault(); retweetCurrent(this);">
+        @csrf
+
+        <button name="retweet" type="submit" class="ml-2">
+
+            <i class="fas fa-retweet"></i>
+            {{-- <i class="far fa-share-square"></i> --}}
+        </button>
+
+    </form>
 </div>
+@endif

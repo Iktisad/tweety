@@ -1,7 +1,11 @@
-function likeComment(id) {
 
-    // console.log(id);
-    var likeBtn = getButtonProperties(id, true);
+
+function likeComment(formPassed) {
+    // console.log(formPassed.action);
+
+    // console.log('did it change?');
+    let likeBtn = getFormProperties(formPassed);
+    // console.log(likeBtn);
     // console.log(likeBtn.formElement.children[0]);
     // console.log(likeBtn.formElement.children[0].className);
 
@@ -10,47 +14,54 @@ function likeComment(id) {
 
 }
 
-function disLikeComment(id) {
+function disLikeComment(formPassed) {
 
-    // likeBtn = getButtonProperties(id, 'true');
-    var dislikeBtn = getButtonProperties(id, false);
+    // likeBtn = getButtonProperties(id, type, 'true');
+    let dislikeBtn = getFormProperties(formPassed);
+    // console.log('inside DIslike');
     // console.log(likeBtn);
-    console.log(dislikeBtn);
+    // console.log(dislikeBtn);
 
     ajaxAction(dislikeBtn);
 
 }
 
-function getButtonProperties(id, status) {
+function getFormProperties(formPassed) {
     let method;
-    let form;
+    // let form;
     let formElement;
     let toggleFormElement;
     let numberOfLikesOrDislikes;
+    let res = formPassed.id.split("-");
 
-
-    if (status) {
-        form = document.getElementById('like-' + id);
-        formElement = form.elements['like'];
-        toggleFormElement = document.getElementById('dislike-' + id).elements['dislike'];
+    /*
+        like-id-tweet | like-id-retweet
+        res[0] = like or dislike signal
+        res[1] = id of the element
+        res[2] = tweet or retweet
+    */
+    if (res[0] == 'like') {
+        // form = document.getElementById('like-' + id + '-' + type);
+        formElement = formPassed.elements['like'];
+        toggleFormElement = document.getElementById('dislike-' + res[1] + '-' + res[2]).elements['dislike'];
         method = 'POST';
-        numberOfLikesOrDislikes = document.getElementById('count-like-' + id).innerHTML;
+        numberOfLikesOrDislikes = document.getElementById('count-like-' + res[1] + '-' + res[2]).innerHTML;
 
     } else {
-        form = document.getElementById('dislike-' + id);
-        formElement = form.elements['dislike'];
-        toggleFormElement = document.getElementById('like-' + id).elements['like'];
-        method = form.elements[1].value;
-        numberOfLikesOrDislikes = document.getElementById('count-dislike-' + id).innerHTML;
+        // form = document.getElementById('dislike-' + id + '-' + type);
+        formElement = formPassed.elements['dislike'];
+        toggleFormElement = document.getElementById('like-' + res[1] + '-' + res[2]).elements['like'];
+        method = formPassed.elements[1].value;
+        numberOfLikesOrDislikes = document.getElementById('count-dislike-' + res[1] + '-' + res[2]).innerHTML;
     }
 
 
 
 
     return dataObject = {
-        id: id,
-        form: form,
-        path: form.action,
+        id: res[1],
+        type: res[2],
+        path: formPassed.action,
         method: method,
         formElement: formElement,
         toggleFormElement: toggleFormElement,
@@ -58,12 +69,9 @@ function getButtonProperties(id, status) {
     }
 }
 
-
-
-
 function ajaxAction(values) {
 
-    // console.log(values.id);
+    // console.log(values);
     $.ajaxSetup({
         headers: {
             // 'X-CSRF-TOKEN': $(':hidden[name="_token"]').attr('value'),
@@ -80,8 +88,8 @@ function ajaxAction(values) {
         success: function (data) {
             console.log(data);
             function updateLikeDislike() {
-                $('#count-like-' + values.id).html(data.likeCount);
-                $('#count-dislike-' + values.id).html(data.dislikeCount);
+                $('#count-like-' + values.id + '-' + values.type).html(data.likeCount);
+                $('#count-dislike-' + values.id + '-' + values.type).html(data.dislikeCount);
             }
             switch (data.success) {
                 case 'likeAdded':

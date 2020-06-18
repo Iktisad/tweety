@@ -4,7 +4,8 @@
     @csrf
 
 
-    <textarea name="comment-{{$tweet->id}}" id="comment-{{$tweet->id}}" type="text" class="w-full h-12 p-2 resize-none overflow-hidden text-gray-800
+    <textarea name="comment-{{$tweet->id}}"
+        id="comment-{{$tweet->isRetweet ? auth()->user()->id.'-'.$tweet->id :$tweet->id}}" type="text" class="w-full h-12 p-2 resize-none overflow-hidden text-gray-800
         @error('comment-'.$tweet->id) shadow appearance-none border border-orange-500 rounded  leading-tight focus:outline-none
         focus:shadow-outline @enderror
         " placeholder="Reply To This Thread."></textarea>

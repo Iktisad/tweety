@@ -95,6 +95,22 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
     }
    
-    
+    public function retweet()
+    {
+        return $this->hasMany(Retweet::class);
+    }
+
+
+    public function getRetweets($friends)
+    {
+        
+        // $friends = App\User::find(1)->follows()->pluck('id');
+        // $retweets = App\Retweet::whereIn('user_id',$friends)->orWhere('user_id',auth()->user()->id)->get();
+        // $retweets = App\Retweet::whereIn('user_id',$friends)->orWhere('user_id',auth()->user()->id)->with('retweetable')->get();
+
+        //  $tweet->merge($retweets) x dont use , use push()
+    }
+
+
     
 }
