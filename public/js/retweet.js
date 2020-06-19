@@ -1,12 +1,12 @@
-function retweetCurrent(val) {
+retweetCurrent = function retweetCurrent(val) {
     // console.log(val.value);
     // let tweetValues = val.value.split('-');
-    console.log(val.id);
-    console.log(val.action);
-    let tweetVal = val.id.split('-');
+    console.log(val.dataset.url);
+    // console.log(val.action);
+    // let tweetVal = val.id.split('-');
     let data = {
         method: 'POST',
-        path: val.action,
+        path: val.dataset.url,
         message: 'greate work'
 
     }

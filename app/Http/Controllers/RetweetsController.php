@@ -13,10 +13,13 @@ class RetweetsController extends Controller
     {
         
         $response = $retweet->retweet();
-        return response()->json([
-            'success' => $response,
-        ]);
-        // return back();
+        if(request()->ajax()){
+
+            return response()->json([
+                'success' => $response,
+            ]);
+        }
+        return back();
     }
 
     public function destroy(Tweet $tweet)

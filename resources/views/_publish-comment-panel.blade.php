@@ -1,4 +1,5 @@
-<form action="{{ route('comment', $tweet) }}" method="post" class="flex items-center">
+<form action="{{ $tweet->isRetweet ? route('retweet.comment', $tweet) :route('comment', $tweet) }}" method="post"
+    class="flex items-center">
 
 
     @csrf

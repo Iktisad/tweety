@@ -8,7 +8,7 @@ function likeComment(formPassed) {
     // console.log(likeBtn);
     // console.log(likeBtn.formElement.children[0]);
     // console.log(likeBtn.formElement.children[0].className);
-
+    // console.log(likeBtn);
     ajaxAction(likeBtn);
 
 
@@ -39,17 +39,19 @@ function getFormProperties(formPassed) {
         res[0] = like or dislike signal
         res[1] = id of the element
         res[2] = tweet or retweet
+       
     */
+
     if (res[0] == 'like') {
         // form = document.getElementById('like-' + id + '-' + type);
-        formElement = formPassed.elements['like'];
+        formElement = formPassed.elements[res[0]];// like
         toggleFormElement = document.getElementById('dislike-' + res[1] + '-' + res[2]).elements['dislike'];
         method = 'POST';
         numberOfLikesOrDislikes = document.getElementById('count-like-' + res[1] + '-' + res[2]).innerHTML;
 
     } else {
         // form = document.getElementById('dislike-' + id + '-' + type);
-        formElement = formPassed.elements['dislike'];
+        formElement = formPassed.elements[res[0]];//dislike
         toggleFormElement = document.getElementById('like-' + res[1] + '-' + res[2]).elements['like'];
         method = formPassed.elements[1].value;
         numberOfLikesOrDislikes = document.getElementById('count-dislike-' + res[1] + '-' + res[2]).innerHTML;
@@ -71,7 +73,7 @@ function getFormProperties(formPassed) {
 
 function ajaxAction(values) {
 
-    // console.log(values);
+    console.log(values);
     $.ajaxSetup({
         headers: {
             // 'X-CSRF-TOKEN': $(':hidden[name="_token"]').attr('value'),

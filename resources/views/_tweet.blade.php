@@ -47,7 +47,7 @@
                 </x->
         </div>
 
-        <div class="p-2 w-full h-auto">
+        <div class="p-2 w-full flex items-center h-auto">
             @include('_publish-comment-panel')
         </div>
 

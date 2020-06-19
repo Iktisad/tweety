@@ -1,26 +1,30 @@
 <div class="w-12  h-12 flex justify-between items-center p-2">
-    <form action="{{ route('comment.like', $comment) }}" method="POST">
+    <form id="like-{{ $comment->id}}-comment" action="{{ route('comment.like', $comment) }}" method="POST"
+        onsubmit="event.preventDefault(); likeComment(this);">
         @csrf
         <button name="like" type="submit">
 
-            <i class="far fa-thumbs-up"></i>
+            <i
+                class="{{$comment->isAlreadyLiked(auth()->user()->id,true)? 'fas fa-thumbs-up' :'far fa-thumbs-up'}}"></i>
         </button>
     </form>
     {{-- comment likes --}}
-    <span class="text-gray-700">{{$comment->likes}}</span>
+    <span id="count-like-{{$comment->id}}-comment" class=" text-gray-700">{{$comment->likes}}</span>
 
 </div>
 <div class="w-12  h-12 flex justify-between items-center p-2">
-    <form action="{{ route('comment.dislike', $comment) }}" method="POST">
+    <form id="dislike-{{ $comment->id}}-comment" action="{{ route('comment.dislike', $comment) }}" method="POST"
+        onsubmit="event.preventDefault(); likeComment(this);">
         @csrf
         @method('PATCH')
         <button name="dislike" type="submit">
-            <i class="far fa-thumbs-down"></i>
+            <i
+                class="{{$comment->isAlreadyDisliked(auth()->user()->id,false)? 'fas fa-thumbs-down' :'far fa-thumbs-down'}}"></i>
         </button>
 
     </form>
     {{-- comment dislikes --}}
-    <span class="text-gray-700">{{ $comment->dislikes }}</span>
+    <span id="count-dislike-{{$comment->id}}-comment" class="text-gray-700">{{ $comment->dislikes }}</span>
 </div>
 <div class="w-12  h-12 flex justify-between items-center p-2">
     <button>

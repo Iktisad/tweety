@@ -45,7 +45,7 @@
         <script src="{{asset('js/textareaAutoResize.js')}}"></script>
         <script src="{{asset('js/focusElements.js')}}"></script>
         <script src="{{asset('js/likeDislikeRequest.js')}}"></script>
-        <script src="{{asset('js/retweet.js')}}"></script>
+        {{-- <script src="{{asset('js/retweet.js')}}"></script> --}}
     </body>
 
 </html>

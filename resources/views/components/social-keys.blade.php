@@ -58,7 +58,7 @@
     </button>
 
 
-    <span class="ml-2 text-xs">2k</span>
+    <span class="ml-2 text-xs">{{$tweet->comments()->count()}}</span>
 
 
 </div>
@@ -69,7 +69,7 @@
 <div class="w-12 h-12 flex items-center p-2">
 
     <form id="{{ $tweet->id}}-tweet" action="{{ route('retweet', $tweet) }}" method="post"
-        onsubmit="event.preventDefault(); retweetCurrent(this);">
+        {{--onsubmit=" event.preventDefault(); retweetCurrent(this); "--}}>
         @csrf
 
         <button name="retweet" type="submit" class="ml-2">
@@ -78,6 +78,6 @@
             {{-- <i class="far fa-share-square"></i> --}}
         </button>
 
-    </form>
+        {{-- </form> --}}
 </div>
 @endif

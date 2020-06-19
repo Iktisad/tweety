@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tweet;
+use App\Retweet;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
@@ -39,5 +40,23 @@ class CommentsController extends Controller
     public function update()
     {
         # code...
+    }
+
+    public function retweetCommentStore(Retweet $retweet)
+    {
+        $comment = 'comment-'.$retweet->id;
+
+        $attribute = request()->validate([
+            $comment => 'required',
+        ],
+        [
+            $comment.'.required' => 'Oops!! No Opinion Mattered!!',
+        ]);
+        $retweet->comments()->create([
+            'user_id' => auth()->user()->id ,
+            'body'  =>   $attribute[$comment] ,
+        ]);
+
+        return back();
     }
 }

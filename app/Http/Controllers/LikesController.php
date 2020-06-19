@@ -41,36 +41,63 @@ class LikesController extends Controller
     public function commentStore(Comment $comment)
     {
         
-        $comment->like();
+        $liked = $comment->like();
+        $likeAndDislikeCount = $comment->getLikesAndDislikes();
+        
+        if (request()->ajax()) {
+            return response()->json([
+                'success' => $liked,
+                'likeCount' => $likeAndDislikeCount['likeCount'],
+                'dislikeCount'=> $likeAndDislikeCount['dislikeCount'],
+            ]);
+        }
         return back();
     }
 
     public function commentUpdate(Comment $comment)
     {
-        $comment->dislike();
+        $disliked = $comment->dislike();
+        if (request()->ajax()) {
+            $likeAndDislikeCount = $comment->getLikesAndDislikes();
+            
+            return response()->json([
+                'success' => $disliked,
+                'likeCount' => $likeAndDislikeCount['likeCount'],
+                'dislikeCount'=> $likeAndDislikeCount['dislikeCount'],
+            ]);
+        }
         return back();
     }
 
     public function retweetStore(Retweet $retweet)
     {
         $liked = $retweet->like();
-        $likeAndDislikeCount = $retweet->getLikesAndDislikes();
-        return response()->json([
-                'success' => $liked,
-                'likeCount' => $likeAndDislikeCount['likeCount'],
-                'dislikeCount'=> $likeAndDislikeCount['dislikeCount'],
-            ]);
+        if (request()->ajax()) {
+            # code...
+            $likeAndDislikeCount = $retweet->getLikesAndDislikes();
+            return response()->json([
+                    'success' => $liked,
+                    'likeCount' => $likeAndDislikeCount['likeCount'],
+                    'dislikeCount'=> $likeAndDislikeCount['dislikeCount'],
+                ]);
+        }
+        return back();
     }
 
     public function retweetUpdate(Retweet $retweet)
     {
         $disliked = $retweet->dislike();
-        $likeAndDislikeCount = $retweet->getLikesAndDislikes();
-        return response()->json([
-                'success' => $disliked,
-                'likeCount' => $likeAndDislikeCount['likeCount'],
-                'dislikeCount'=> $likeAndDislikeCount['dislikeCount'],
-            ]);
+
+        if(request()->ajax()){
+
+            $likeAndDislikeCount = $retweet->getLikesAndDislikes();
+            return response()->json([
+                    'success' => $disliked,
+                    'likeCount' => $likeAndDislikeCount['likeCount'],
+                    'dislikeCount'=> $likeAndDislikeCount['dislikeCount'],
+                ]);
+        }
+        return back();
     }
 
 }

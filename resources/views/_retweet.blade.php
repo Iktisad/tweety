@@ -82,11 +82,11 @@
         </div>
 
 
-        {{-- @foreach ($tweet->comments as $comment)
-        {{-- include comments  --}}
-        {{-- @include('_tweet-comment')  --}}
+        @foreach ($tweet->comments as $comment)
 
-        {{-- @endforeach --}}
+        @include('_tweet-comment')
+
+        @endforeach
 
     </div>
 </div>
