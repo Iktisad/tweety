@@ -1,6 +1,5 @@
 <x-master>
 
-    @section('content')
     <div class="container mx-auto flex justify-center ">
         <div class="px-6 py-4 bg-gray-100 rounded-lg">
 

@@ -44,7 +44,7 @@
         <script src="{{asset('https://unpkg.com/turbolinks')}}"></script>
         <script src="{{asset('js/textareaAutoResize.js')}}"></script>
         <script src="{{asset('js/focusElements.js')}}"></script>
-        <script src="{{asset('js/likeDislikeRequest.js')}}"></script>
+        <script src="js/socialKeyEvents.js"></script>
         {{-- <script src="{{asset('js/retweet.js')}}"></script> --}}
     </body>
 
