@@ -1,5 +1,6 @@
 <x-master >
 
+
     @section('content')
     
     <div class="container mx-auto flex justify-center   ">
@@ -9,6 +10,7 @@
                       <i class="fas fa-feather fa-4x "></i>
               </div>
             <div class="font-bold text-lg  mb-4 text-center" >{{ __('Tweety') }}</div>
+
 
 
             <form method="POST" action="{{ route('login') }}">

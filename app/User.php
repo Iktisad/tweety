@@ -82,12 +82,12 @@ class User extends Authenticatable
         // also include tweets of people user follows
         // in decending order
         $friends = $this->follows()->pluck('id');
+        $retweets = $this->getRetweets($friends);
+        $tweets= $this->getTweets($friends);
+        $tweets->push($retweets);
+        $tweets = $tweets->flatten()->sortByDesc('created_at')->flatten();
         
-        return Tweet::whereIn('user_id',$friends)
-        ->orWhere('user_id',$this->id)
-        ->latest()
-        ->withLikes() // this method is in likable
-        ->paginate(20);
+        return $tweets;
     }
 
     public function likes()
@@ -95,6 +95,28 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
     }
    
-    
+    public function retweet()
+    {
+        return $this->hasMany(Retweet::class);
+    }
+
+    public function getRetweets($friends)
+    {
+        $retweets = Retweet::whereIn('user_id',$friends)->orWhere('user_id',auth()->user()->id)->with('retweetable','retweetable.user:id,username,avatar')->latest()->withLikes()->take(5)->get();
+               
+        foreach ($retweets as $retweet) {
+            $retweet->isRetweet = true;
+        }
+        return $retweets;
+    }
+
+    public function getTweets($friends)
+    {
+        return Tweet::whereIn('user_id',$friends)
+                ->orWhere('user_id',$this->id)
+                ->latest()
+                ->withLikes() // this method is in likable
+                ->take(5)->get();
+    }
     
 }

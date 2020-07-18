@@ -30,13 +30,14 @@ trait Likeable
         
         if($this->isAlreadyLiked($userId,$liked)){
             // remove like
-           return $this->likes()->where('user_id', $userId)->delete();
+            $this->likes()->where('user_id', $userId)->delete();
+            return 'likeRemoved'; 
         }
 
         
-            // if it exists then remove dislike by updating the record
-
-        return $this->likes()->updateOrCreate(
+        // if it exists then remove dislike by updating the record
+        // check for change
+        $model =    $this->likes()->updateOrCreate(
                         [
                             'user_id'=>$userId,
                             'like' => !$this->isAlreadyDisliked($userId,!$liked),
@@ -45,9 +46,15 @@ trait Likeable
                             'like'=>$liked,
                         ]
                     
-                );
+                    );
+
+        if($model->wasChanged()){
+            return 'toggledToLike';
+        }
+        return 'likeAdded'; 
         
     }
+    
 
     public function dislike(User $user = null, $liked = false)
     {
@@ -57,10 +64,11 @@ trait Likeable
         if($this->isAlreadyDisliked($userId,$liked)){
             // if it exists then remove dislike
             
-            return $this->likes()->where('user_id', $userId)->delete();
+            $this->likes()->where('user_id', $userId)->delete();
+            return  'dislikeRemoved'; 
          }
-            // remove like
-        return $this->likes()->updateOrCreate(
+        // remove like
+         $model =   $this->likes()->updateOrCreate(
                         [
                             'user_id'=>$userId,
                             'like' => $this->isAlreadyLiked($userId, !$liked),
@@ -68,8 +76,14 @@ trait Likeable
                         [
                             'like'=> $liked,
                         ]
-                    
-                );
+                            
+                    );
+
+        if($model->wasChanged()){
+            return 'toggledToDislike';
+        }
+
+        return 'dislikeAdded';
     }
 
     public function isAlreadyLiked($userId,$liked)
@@ -81,4 +95,15 @@ trait Likeable
     {
         return $this->likes()->where('user_id',$userId)->where('like',$liked)->exists();
     }
+
+    public function getLikesAndDislikes()
+    {
+       return [
+           
+            'likeCount' => $this->likes()->where('like',1)->count(),
+            'dislikeCount' => $this->likes()->where('like',0)->count(),
+        ];
+    } 
+
 }
+// $tweet->likes()->where(['user_id'=>1,'like'=>1])->exists()

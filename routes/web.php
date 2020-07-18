@@ -33,11 +33,19 @@ Route::post('/likes/{comment}/comment-like','LikesController@commentStore')->nam
 Route::patch('/likes/{comment}/comment-dislike','LikesController@commentUpdate')->name('comment.dislike');
 
 
-Route::post('/comments/{comment}/comment', 'CommentsController@store')->name('comment');
+Route::post('/comments/{tweet}/comment', 'CommentsController@store')->name('comment');
 Route::patch('/comment/{comment}/update', 'CommentsController@update')->name('comment.update');
 
-Route::post('/comments/{comment}/reply', 'CommentsController@storeReply')->name('comment-reply');
-Route::patch('/comments/{comment}/updateReply', 'CommentsController@updateReply')->name('comment-reply.update');
+// Route::post('/comments/{comment}/reply', 'CommentsController@storeReply')->name('comment-reply');
+// Route::patch('/comments/{comment}/updateReply', 'CommentsController@updateReply')->name('comment-reply.update');
+
+Route::post('/likes/{retweet}/retweet-like','LikesController@retweetStore')->name('retweet.like');
+Route::patch('/likes/{retweet}/retweet-dislike','LikesController@retweetUpdate')->name('retweet.dislike');
+
+Route::post('/retweets/{retweet}/store','RetweetsController@store')->name('retweet');
+Route::post('/retweets/{retweet}/retweet-store','RetweetsController@retweetStore')->name('retweet.store');
+
+Route::post('/comments/{retweet}/retweet-comment','CommentsController@retweetCommentStore')->name('retweet.comment');
 
 });
 

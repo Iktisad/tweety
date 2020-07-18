@@ -1,5 +1,6 @@
 <x-master>
 
+
     @section('content')
 
     <div class="container mx-auto flex justify-center  ">
@@ -10,6 +11,7 @@
             <div class="font-bold text-lg  mb-4 text-center" >{{ __('Tweety') }}</div>
               
                     <form method="POST" action="{{ route('register') }}">
+
                             @csrf
                             {{-- Username --}}
                           
@@ -98,4 +100,5 @@
             
         </div>
     </div>
+
 </x-master>

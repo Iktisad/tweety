@@ -19,6 +19,9 @@
 
         <script src="{{asset('https://kit.fontawesome.com/5ffbd0ba60.js')}}" crossorigin="anonymous"></script>
 
+        <script src="{{ asset('https://code.jquery.com/jquery-3.5.1.min.js')}}"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
         <!-- Styles -->
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     </head>
@@ -38,9 +41,11 @@
         </div>
 
 
-        <script src="{{asset('https://unpkg.com/turbolinks')}}">
-
-        </script>
+        <script src="{{asset('https://unpkg.com/turbolinks')}}"></script>
+        <script src="{{asset('js/textareaAutoResize.js')}}"></script>
+        <script src="{{asset('js/focusElements.js')}}"></script>
+        <script src="js/socialKeyEvents.js"></script>
+        {{-- <script src="{{asset('js/retweet.js')}}"></script> --}}
     </body>
 
 </html>

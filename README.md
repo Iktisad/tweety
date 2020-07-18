@@ -71,16 +71,15 @@ change
 
 ### 4th step
 
-#### Now run all the commands below
+#### Now run all the commands below and also remember to start up the local server xampp/wamp...etc
 
 ***Note all these commands must be run in \xampp\htdocs\tweety directory***
 
 > php artisan key:generate
 
-> php artisan migrate // this will create all the tables in the database
-
 > php artisan serve // this will generate localhost session http//: 127.0.0.1:800 copy paste in your browser to gain access
 
+> php artisan migrate // this will create all the tables in the database
 
 ***Finally if you face any errors during running the project*** ,
 run the command inside /xampp/htdocs/tweety
