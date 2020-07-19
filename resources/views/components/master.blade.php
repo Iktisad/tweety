@@ -29,6 +29,7 @@
     <body>
         <div id="app">
             <section class="px-8 py-4 mb-6">
+                @if (Auth::check())
                 <header class="container mx-auto">
                     <h1>
                         <span style="font-size: 2em; color: rgb(78, 114, 231);">
@@ -36,6 +37,10 @@
                         </span>
                     </h1>
                 </header>
+
+
+                @endif
+
             </section>
             {{$slot}}
         </div>
