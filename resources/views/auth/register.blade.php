@@ -1,8 +1,5 @@
 <x-master>
 
-
-    @section('content')
-
     <div class="container mx-auto flex justify-center  ">
         <div class="py-4 bg-gray-200 rounded-lg lg:w-1/3 sm:w-5/6 md:w-1/4 pt-8 shadow-xl ">
             <div class="text-center -mt-16" style=" color: rgb(78, 114, 231);">
