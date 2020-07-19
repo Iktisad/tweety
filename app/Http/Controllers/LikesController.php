@@ -15,27 +15,32 @@ class LikesController extends Controller
     {   
         
         $liked = $tweet->like();
-        $likeAndDislikeCount = $tweet->getLikesAndDislikes();
-        
-        return response()->json([
+        if (request()->ajax()) {
             
+            $likeAndDislikeCount = $tweet->getLikesAndDislikes();
+            return response()->json([
                 'success'=> $liked, 
                 'likeCount' => $likeAndDislikeCount['likeCount'],
                 'dislikeCount'=> $likeAndDislikeCount['dislikeCount'],
             ]);
-        // return back();
+            
+        }
+        return back();
     }
 
     public function update(Tweet $tweet)
     {
         $disliked = $tweet->dislike();
-        $likeAndDislikeCount = $tweet->getLikesAndDislikes();
-        
-        return response()->json([
-                'success' => $disliked,
-                'likeCount' => $likeAndDislikeCount['likeCount'],
-                'dislikeCount'=> $likeAndDislikeCount['dislikeCount'],
-            ]);
+        if(request()->ajax()){
+            
+            $likeAndDislikeCount = $tweet->getLikesAndDislikes();
+            return response()->json([
+                    'success' => $disliked,
+                    'likeCount' => $likeAndDislikeCount['likeCount'],
+                    'dislikeCount'=> $likeAndDislikeCount['dislikeCount'],
+                ]);
+        }
+        return back();
     }
 
     public function commentStore(Comment $comment)
