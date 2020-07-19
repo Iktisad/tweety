@@ -68,6 +68,7 @@ change
 
 >DB_PASSWORD = homestead to DB_PASSWORD = ''
 
+>FILESYSTEM_DRIVER=public
 
 ### 4th step
 
