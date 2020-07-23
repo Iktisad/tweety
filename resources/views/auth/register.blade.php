@@ -14,7 +14,7 @@
 
 
     <div class="container mx-auto flex justify-center">
-        <div class="py-4 bg-gray-200 rounded-lg px-8 pt-6 pb-8 mb-4 w-full mx-auto max-w-sm shadow-xl ">
+        <div class="py-4 bg-gray-200 rounded-lg px-8 pt-6 pb-8 mb-4 w-full max-w-sm shadow-xl ">
             <div class="text-center -mt-16" style=" color: rgb(78, 114, 231);">
                 <i class="fas fa-feather fa-4x "></i>
             </div>
