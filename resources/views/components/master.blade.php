@@ -24,6 +24,7 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        {{-- @yield('style') --}}
     </head>
 
     <body>
